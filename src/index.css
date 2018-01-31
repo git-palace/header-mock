@@ -1,5 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Oswald:700');
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Lato', 'Oswald', sans-serif;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+input {
+    background: #fff;
+    color: #525865;
+    border-radius: 4px;
+    border: 1px solid #d1d1d1;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.45;
+    outline: none;
+    padding: 0.5em;
+    transition: .18s ease-out;
+}
+
+input:hover {
+    box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+input:focus {
+    color: #4b515d;
+    border: 1px solid #B8B6B6;
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    background-color: #0072a7;
+    width: 1em;
+    height: 1em;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
 }
