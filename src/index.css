@@ -36,11 +36,9 @@ input:focus {
 }
 
 .icon {
-    background-color: #0072a7;
+    background-size: cover;
     width: 1em;
     height: 1em;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
 }
 
 .text-uppercase {

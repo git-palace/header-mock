@@ -10,12 +10,20 @@ class App extends Component {
       sel_lang: "us",
       openedOtherLangs: false
     };
-    this.handleClick = this.handleClick.bind(this);
+
+    this.openOtherLangs = this.openOtherLangs.bind(this);
+    this.selectLang = this.selectLang.bind(this);
   }
 
-  handleClick() {
+  openOtherLangs() {
     this.setState({
       openedOtherLangs: !this.state.openedOtherLangs
+    });
+  }
+
+  selectLang(lang) {
+    this.setState({
+      sel_lang: lang
     });
   }
 
@@ -31,7 +39,7 @@ class App extends Component {
           </div>
 
           <div className="contact-info">
-            <div className={"lang-list " + (this.state.openedOtherLangs ? "opened" : "")} onClick={this.handleClick}>
+            <div className={"lang-list " + (this.state.openedOtherLangs ? "opened" : "")} onClick={this.openOtherLangs}>
               <div className="selected text-uppercase ml-auto">
                 <span>{this.state.sel_lang}</span>&nbsp;<img src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
               </div>
@@ -41,7 +49,7 @@ class App extends Component {
                   this.state.langs.map((lang, idx) => {
                     if (this.state.sel_lang !== lang) {
                       return (
-                        <li className="text-uppercase" key={idx}>
+                        <li className="text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
                           <span>{lang}</span>&nbsp;<img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
                         </li>
                       )
