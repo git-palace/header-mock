@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import lang_us from './assets/icons/lang-us.png';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      langs: ["us", "ca"],
+      sel_lang: "us",
+      openedOtherLangs: false
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      openedOtherLangs: !this.state.openedOtherLangs
+    });
+  }
+
   render() {
     return (
       <div className="header">
@@ -15,10 +31,24 @@ class App extends Component {
           </div>
 
           <div className="contact-info">
-            <div className="lang-list">
-              <div className="selected">
-                <span>US</span>&nbsp;<img src={lang_us} alt="lang-us" />
+            <div className={"lang-list " + (this.state.openedOtherLangs ? "opened" : "")} onClick={this.handleClick}>
+              <div className="selected text-uppercase ml-auto">
+                <span>{this.state.sel_lang}</span>&nbsp;<img src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
               </div>
+
+              <ul className="others">
+                {
+                  this.state.langs.map((lang, idx) => {
+                    if (this.state.sel_lang !== lang) {
+                      return (
+                        <li className="text-uppercase" key={idx}>
+                          <span>{lang}</span>&nbsp;<img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
+                        </li>
+                      )
+                    }
+                  })
+                }
+              </ul>
             </div>
 
             <div className="phone">

@@ -4,6 +4,7 @@ body {
     padding: 0;
     font-size: 14px;
     font-family: 'Lato', 'Oswald', sans-serif;
+    color: #444444;
 }
 
 .ml-auto {
@@ -40,4 +41,8 @@ input:focus {
     height: 1em;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }

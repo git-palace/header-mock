@@ -5,7 +5,7 @@
 
 .header .top {
     display: flex;
-    padding: 0px 5em;
+    padding: 1em 5em;
 }
 
 .search-container {
@@ -40,21 +40,71 @@
 
 .contact-info {
     padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.lang-list {
+    cursor: pointer;
+    position: relative;
 }
 
 .lang-list .selected {
-    font-size: 2em;
+    font-size: 1.5em;
     display: flex;
     align-items: center;
+    position: relative;
+    cursor: pointer;
+    width: 120px;
 }
 
-.lang-list .selected span {
+.lang-list .selected::after {
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    pointer-events: none;
+    border-top-color: #0072a7;
+    border-width: 8px;
+    margin-left: -8px;
+    top: 12px;
+    right: 6px;
+}
+
+.lang-list span {
     margin-right: 0.5em;
-    margin-left: auto;
+    margin-left: 0.5em;
 }
 
-.lang-list .selected img {
-    height: 40px;
+.lang-list img {
+    height: 32px;
+    width: 40px;
+}
+
+.lang-list.opened .others {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.lang-list .others {
+    position: absolute;
+    right: 0;
+    top: 1.5em;
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 0 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 0px;
+    width: 120px;
+}
+
+.lang-list .others li {
+    display: flex;
+    width: 100%;
+    padding-right: 30px;
+    font-size: 1.5em;
+    align-items: center;
 }
 
 .phone-number {
