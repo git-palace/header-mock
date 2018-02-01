@@ -8,7 +8,27 @@ class App extends Component {
     this.state = {
       langs: ["us", "ca"],
       sel_lang: "us",
-      openedOtherLangs: false
+      openedOtherLangs: false,
+      navItems1: [{
+        title: "Assisted Living",
+        child: false
+      }, {
+        title: "Memory Care",
+        child: false
+      }, {
+        title: "Nursing Homes",
+        child: false
+      }, {
+        title: "More Living Options",
+        child: ["Child Item 1", "Child Item 2"]
+      }],
+      navItems2: [{
+        title: "Planning & Advice",
+        child: false
+      }, {
+        title: "How our service works",
+        child: false
+      }]
     };
 
     this.openOtherLangs = this.openOtherLangs.bind(this);
@@ -68,6 +88,42 @@ class App extends Component {
               <p className="desc">Talk to a local advisor for FREE</p>
             </div>
           </div>
+        </div>
+
+        <div className="bottom">
+          <ul className="menu">
+            {
+              this.state.navItems1.map((menuItem, idx) => {
+                return (
+                  <li className={"item menu-1 " + (menuItem.child ? "has-child" : "")} key={idx}>
+                    <a>{menuItem.title}</a>
+
+                    { menuItem.child ?
+                      <ul>
+                        {
+                          menuItem.child.map((item, c_idx) => {
+                            return (
+                              <li className="item" key={c_idx}><a>{item}</a></li>
+                            )
+                          })
+                        }
+                      </ul>
+                    : null }
+                  </li>
+                )
+              })
+            }
+            <span className="spliter">|</span>
+            {
+              this.state.navItems2.map((menuItem, idx) => {
+                return (
+                  <li className="item menu-2" key={idx}>
+                    <a>{menuItem.title}</a>
+                  </li>
+                )
+              })
+            }
+          </ul>
         </div>
       </div >
     );

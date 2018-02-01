@@ -81,7 +81,6 @@
 }
 
 .lang-list.opened .others {
-    -webkit-transform: scale(1);
     transform: scale(1);
 }
 
@@ -126,4 +125,77 @@
     color: #929291;
     font-size: 1.5em;
     margin: 0px;
+}
+
+ul.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    font-family: 'Oswald';
+    background-color: #004269;
+    color: #b8cad6;
+    text-transform: uppercase;
+}
+
+.menu>.item {
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu .spliter {
+    width: 0px;
+    height: 30px;
+    margin: auto;
+    border-right: 2px solid #b8cad6;
+    color: transparent;
+}
+
+.menu .item.has-child {
+    position: relative;
+}
+
+.menu .item.has-child::after {
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    pointer-events: none;
+    border-top-color: #ffffff;
+    border-width: 8px;
+    margin-left: -8px;
+    top: calc(50% - 4px);
+    right: 1.5em;
+}
+
+.menu .item.has-child ul {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    right: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #004269;
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 90% 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.menu .item.has-child:hover ul {
+    transform: scale(1);
+}
+
+.menu .item a {
+    display: block;
+}
+
+.menu .item a:hover {
+    color: #ffffff;
+    background-color: #0072a7;
 }
