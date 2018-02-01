@@ -7,7 +7,6 @@
 
 .header .top {
     display: flex;
-    padding: 0 2em;
     height: 156px;
     background-color: #ffffff;
     width: 1024px;
@@ -103,21 +102,6 @@
     transition-delay: 0s, 0s, 0.3s;
 }
 
-
-/* .lang-list .others {
-    position: absolute;
-    right: 0;
-    top: 1.5em;
-    transition: all 0.3s ease;
-    transform: scale(0);
-    transform-origin: 0 0;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
-    z-index: 10;
-    background-color: #ffffff;
-    padding: 0px;
-    width: 120px;
-} */
-
 .lang-list .others li {
     display: flex;
     width: 100%;
@@ -164,7 +148,8 @@ ul.menu {
     color: #B9CAD5;
     text-transform: uppercase;
     margin: 0 auto;
-    width: 1024px
+    width: 1024px;
+    z-index: 2;
 }
 
 .menu>.item {
@@ -219,7 +204,7 @@ ul.menu {
     left: 0;
     width: 100%;
     transform: translateY(-2em);
-    z-index: -1;
+    z-index: 1;
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
     background-color: #004269;
     list-style: none;

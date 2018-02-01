@@ -121,7 +121,7 @@ class App extends Component {
                     if (this.state.sel_lang !== lang) {
                       return (
                         <li className="text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
-                          <span>{lang}</span>&nbsp;<img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
+                          <span>{lang}</span> <img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
                         </li>
                       )
                     }
