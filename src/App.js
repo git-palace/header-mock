@@ -105,11 +105,8 @@ class App extends Component {
     return (
       <div className="header">
         <div className="top">
-          <div className="search-container ml-auto">
-            <div className="search">
-              <input className="min-width-250px" type="text" placeholder="Search by City or Zip" />
-              <i className="icon icon-search"></i>
-            </div>
+          <div className="logo">
+            <img src="https://brandongaille.com/wp-content/uploads/2013/07/Blue-Sky-Studios-Company-Logo.jpg" alt="logo" />
           </div>
 
           <div className="contact-info">
@@ -136,7 +133,7 @@ class App extends Component {
             <div className="phone">
               <h1 className="phone-number">
                 <i className="icon icon-telephone"></i>
-                <span>123-456-7890</span>
+                <span>877-753-7751</span>
               </h1>
 
               <p className="desc">Talk to a local advisor for FREE</p>
@@ -181,13 +178,15 @@ class App extends Component {
         </div>
 
         <div className="sub-menu">
-          {
-            this.state.navItems3[this.state.sel_lang].map((item, key) => {
-              return (
-                <a key={key}>{item.title}</a>
-              )
-            })
-          }
+          <ul>
+            {
+              this.state.navItems3[this.state.sel_lang].map((item, key) => {
+                return (
+                  <li key={key}><a>{item.title}</a></li>
+                )
+              })
+            }
+          </ul>
         </div>
       </div >
     );
