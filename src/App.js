@@ -28,7 +28,61 @@ class App extends Component {
       }, {
         title: "How our service works",
         child: false
-      }]
+      }],
+      navItems3: {
+        us: [{
+          title: "New York"
+        }, {
+          title: "Los Angeles"
+        }, {
+          title: "Chicago"
+        }, {
+          title: "Dallas"
+        }, {
+          title: "Houston"
+        }, {
+          title: "Philadelphia"
+        }, {
+          title: "Miami"
+        }, {
+          title: "Atlanta"
+        }, {
+          title: "Boston"
+        }, {
+          title: "San Jose"
+        }, {
+          title: "Phoenix"
+        }, {
+          title: "Seattle"
+        }, {
+          title: "Minneapolis"
+        }, {
+          title: "San Diego"
+        }, {
+          title: "Denver"
+        }],
+        ca: [{
+          title: "Toronto"
+        }, {
+          title: "Vancouver"
+        }, {
+          title: "Calgary"
+        }, {
+          title: "Edmonton"
+        }, {
+          title: "Ottawa"
+        }, {
+          title: "Mississauga"
+        }, {
+          title: "Winnipeg"
+        }, {
+          title: "London"
+        }, {
+          title: "Surrey"
+        }, {
+          title: "Hamilton"
+        }]
+      }
     };
 
     this.openOtherLangs = this.openOtherLangs.bind(this);
@@ -96,19 +150,19 @@ class App extends Component {
               this.state.navItems1.map((menuItem, idx) => {
                 return (
                   <li className={"item menu-1 " + (menuItem.child ? "has-child" : "")} key={idx}>
-                    <a>{menuItem.title}</a>
+                    <a><span>{menuItem.title}</span></a>
 
-                    { menuItem.child ?
+                    {menuItem.child ?
                       <ul>
                         {
                           menuItem.child.map((item, c_idx) => {
                             return (
-                              <li className="item" key={c_idx}><a>{item}</a></li>
+                              <li className="child item" key={c_idx}><a><span>{item}</span></a></li>
                             )
                           })
                         }
                       </ul>
-                    : null }
+                      : null}
                   </li>
                 )
               })
@@ -118,12 +172,22 @@ class App extends Component {
               this.state.navItems2.map((menuItem, idx) => {
                 return (
                   <li className="item menu-2" key={idx}>
-                    <a>{menuItem.title}</a>
+                    <a><span>{menuItem.title}</span></a>
                   </li>
                 )
               })
             }
           </ul>
+        </div>
+
+        <div className="sub-menu">
+          {
+            this.state.navItems3[this.state.sel_lang].map((item, key) => {
+              return (
+                <a key={key}>{item.title}</a>
+              )
+            })
+          }
         </div>
       </div >
     );
