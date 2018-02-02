@@ -234,6 +234,7 @@ class App extends Component {
               })
             }
             <span className="spliter visible-lg">|</span>
+            <hr className="vsible-sm" />
             {
               this.state.navItems2.map((menuItem, idx) => {
                 return (
@@ -243,6 +244,11 @@ class App extends Component {
                 )
               })
             }
+            <hr className="vsible-sm" />
+
+            <li className="item menu-1 login visible-sm-block">
+              <a><span>Log In</span></a>
+            </li>
           </ul>
         </div>
 
