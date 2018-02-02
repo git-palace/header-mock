@@ -12,22 +12,27 @@ class App extends Component {
       navItems1: [{
         title: "Assisted Living",
         child: false,
-        mobile_cities: true
+        mobile_cities: true,
+        childMenuOpened: false
       }, {
         title: "Memory Care",
         child: false,
-        mobile_cities: true
+        mobile_cities: true,
+        childMenuOpened: false
       }, {
         title: "Nursing Homes",
         child: false,
-        mobile_cities: true
+        mobile_cities: true,
+        childMenuOpened: false
       }, {
         title: "Idependent Living",
         child: false,
-        mobile_cities: true
+        mobile_cities: true,
+        childMenuOpened: false
       }, {
         title: "More Living Options",
-        child: ["Child Item 1", "Child Item 2"]
+        child: ["Child Item 1", "Child Item 2"],
+        childMenuOpened: false
       }],
       navItems2: [{
         title: "Planning & Advice",
@@ -116,6 +121,14 @@ class App extends Component {
     })
   }
 
+  openChildMenu(idx) {
+    let val = this.state.navItems1;
+    val[idx].childMenuOpened = !val[idx].childMenuOpened;
+    this.setState({
+      navItems1: val
+    })
+  }
+
   render() {
     return (
       <div className="header">
@@ -186,7 +199,7 @@ class App extends Component {
           </div>
 
           <div className="search visible-sm">
-            <input className="" placeholder="Search by City or Zip"/>
+            <input className="" placeholder="Search by City or Zip" />
           </div>
 
           <h1 className="page-title visible-sm text-uppercase">Home</h1>
@@ -195,7 +208,7 @@ class App extends Component {
             {
               this.state.navItems1.map((menuItem, idx) => {
                 return (
-                  <li className={"item menu-1 " + (menuItem.child ? "has-child" : "")} key={idx}>
+                  <li className={"item menu-1 " + (menuItem.child ? " has-child" : "") + (menuItem.childMenuOpened ? " opened" : "") + (menuItem.mobile_cities ? " has-cities" : "")} key={idx} onClick={() => this.openChildMenu(idx)}>
                     <a><span>{menuItem.title}</span></a>
 
                     {menuItem.child ?
@@ -208,7 +221,14 @@ class App extends Component {
                           })
                         }
                       </ul>
-                      : null}
+                      : menuItem.mobile_cities ? <ul>
+                        {
+                          this.state.navItems3[this.state.sel_lang].map((item, key) => {
+                            return (
+                              <li className="child item" key={key}><a>{item.title}</a></li>
+                            )
+                          })}
+                      </ul> : null}
                   </li>
                 )
               })
