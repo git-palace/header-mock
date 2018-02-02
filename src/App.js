@@ -221,7 +221,7 @@ class App extends Component {
                           })
                         }
                       </ul>
-                      : menuItem.mobile_cities ? <ul>
+                      : menuItem.mobile_cities ? <ul className="visible-sm-block">
                         {
                           this.state.navItems3[this.state.sel_lang].map((item, key) => {
                             return (
@@ -234,7 +234,7 @@ class App extends Component {
               })
             }
             <span className="spliter visible-lg">|</span>
-            <hr className="vsible-sm" />
+            <hr className="visible-sm" />
             {
               this.state.navItems2.map((menuItem, idx) => {
                 return (
@@ -244,7 +244,7 @@ class App extends Component {
                 )
               })
             }
-            <hr className="vsible-sm" />
+            <hr className="visible-sm" />
 
             <li className="item menu-1 login visible-sm-block">
               <a><span>Log In</span></a>
