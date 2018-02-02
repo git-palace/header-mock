@@ -89,11 +89,13 @@ class App extends Component {
         }, {
           title: "Hamilton"
         }]
-      }
+      },
+      openMobileMenu: false
     };
 
     this.openOtherLangs = this.openOtherLangs.bind(this);
     this.selectLang = this.selectLang.bind(this);
+    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
   }
 
   openOtherLangs() {
@@ -108,11 +110,17 @@ class App extends Component {
     });
   }
 
+  toggleMobileMenu() {
+    this.setState({
+      openMobileMenu: !this.state.openMobileMenu
+    })
+  }
+
   render() {
     return (
       <div className="header">
         <div className="top">
-          <div className="menu-btn-container visible-sm">
+          <div className="menu-btn-container visible-sm" onClick={this.toggleMobileMenu}>
             <a>Menu</a>
           </div>
 
@@ -152,7 +160,37 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="bottom">
+        <div className={"bottom " + (this.state.openMobileMenu ? " opened" : " closed")}>
+          <div className="menu-btn-container visible-sm close">
+            <a onClick={this.toggleMobileMenu}><span>&#10006;</span></a>
+
+            <div className={"visible-sm-block lang-list " + (this.state.openedOtherLangs ? "opened" : "")} onClick={this.openOtherLangs}>
+              <div className="selected text-uppercase ml-auto">
+                <span>{this.state.sel_lang}</span>&nbsp;<img src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
+              </div>
+
+              <ul className="others">
+                {
+                  this.state.langs.map((lang, idx) => {
+                    if (this.state.sel_lang !== lang) {
+                      return (
+                        <li className="text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
+                          <span>{lang}</span> <img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
+                        </li>
+                      )
+                    }
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+
+          <div className="search visible-sm">
+            <input className="" placeholder="Search by City or Zip"/>
+          </div>
+
+          <h1 className="page-title visible-sm text-uppercase">Home</h1>
+
           <ul className="menu">
             {
               this.state.navItems1.map((menuItem, idx) => {
