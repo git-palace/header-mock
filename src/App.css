@@ -437,6 +437,7 @@ ul.menu {
     }
     .menu .item.has-cities ul,
     .menu .item.has-child ul {
+        background-color: transparent;
         position: relative;
     }
     .menu .item ul a {
