@@ -132,100 +132,97 @@ class App extends Component {
   render() {
     return (
       <div className="header">
-        <div className="top">
-          <div className="menu-btn-container visible-sm" onClick={this.toggleMobileMenu}>
-            <a>Menu</a>
+        <div className="header-top">
+          <div className="mobile-menu-btn-container visible-sm" onClick={this.toggleMobileMenu}>
+            <a className="mobile-menu-btn mobile-menu-btn__open">Menu</a>
           </div>
 
-          <div className="logo visible-lg">
-            <img src="https://brandongaille.com/wp-content/uploads/2013/07/Blue-Sky-Studios-Company-Logo.jpg" alt="logo" />
+          <div className="header-logo visible-lg">
+            <img className="header-logo__img" src="https://brandongaille.com/wp-content/uploads/2013/07/Blue-Sky-Studios-Company-Logo.jpg" alt="logo" />
           </div>
 
-          <div className="contact-info">
-            <div className={"visible-lg-block lang-list " + (this.state.openedOtherLangs ? "opened" : "")} onClick={this.openOtherLangs}>
-              <div className="selected text-uppercase ml-auto">
-                <span>{this.state.sel_lang}</span>&nbsp;<img src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
+          <div className="header-contact-info">
+            <div className="visible-lg-block lang-list " onClick={this.openOtherLangs}>
+              <div className={"lang-list--selected text-uppercase ml-auto" + (this.state.openedOtherLangs ? " lang-list--selected--opened" : "")}>
+                <span className="lang-list__span">{this.state.sel_lang}</span>&nbsp;<img className="lang-list__img" src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
               </div>
 
-              <ul className="others">
+              <ul className={"lang-list-others " + (this.state.openedOtherLangs ? "lang-list-others--opened" : "lang-list-others--closed")}>
                 {
-                  this.state.langs.map((lang, idx) => {
-                    if (this.state.sel_lang !== lang) {
-                      return (
-                        <li className="text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
-                          <span>{lang}</span> <img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
-                        </li>
-                      )
-                    }
-                  })
+                  this.state.langs.map((lang, idx) => (this.state.sel_lang !== lang) ?
+                    <li className="lang-list__li text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
+                      <span className="lang-list__span">{lang}</span> <img className="lang-list__img" src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
+                    </li> : null)
                 }
               </ul>
             </div>
 
             <div className="phone">
-              <h1 className="phone-number">
-                <i className="icon icon-telephone visible-lg"></i>
+              <h1 className="phone__number">
+                <i className="icon phone__icon visible-lg"></i>
                 <span>877-753-7751</span>
               </h1>
 
-              <p className="desc">Talk&nbsp;<span className="visible-lg">to a local advisor&nbsp;</span>for FREE</p>
+              <p className="phone__desc">Talk&nbsp;<span className="visible-lg">to a local advisor&nbsp;</span>for FREE</p>
             </div>
           </div>
         </div>
 
-        <div className={"bottom " + (this.state.openMobileMenu ? " opened" : " closed")}>
-          <div className="menu-btn-container visible-sm close">
-            <a onClick={this.toggleMobileMenu}><span>&#10006;</span></a>
+        <div className={"header-bottom " + (this.state.openMobileMenu ? " header-bottom--opened" : " header-bottom--closed")}>
+          <div className="mobile-menu-btn-container mobile-menu-btn__close-container visible-sm close">
+            <a className="mobile-menu-btn mobile-menu-btn__close" onClick={this.toggleMobileMenu}><span>&#10006;</span></a>
 
-            <div className={"visible-sm-block lang-list " + (this.state.openedOtherLangs ? "opened" : "")} onClick={this.openOtherLangs}>
-              <div className="selected text-uppercase ml-auto">
-                <span>{this.state.sel_lang}</span>&nbsp;<img src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
+            <div className="visible-sm-block lang-list " onClick={this.openOtherLangs}>
+              <div className={"lang-list--selected text-uppercase ml-auto" + (this.state.openedOtherLangs ? " lang-list--selected--opened" : "")}>
+                <span className="lang-list__span">{this.state.sel_lang}</span>&nbsp;<img className="lang-list__img" src={"/assets/icons/lang-" + this.state.sel_lang + ".png"} alt="lang" />
               </div>
 
-              <ul className="others">
+              <ul className={"lang-list-others " + (this.state.openedOtherLangs ? "lang-list-others--opened" : "lang-list-others--closed")}>
                 {
-                  this.state.langs.map((lang, idx) => {
-                    if (this.state.sel_lang !== lang) {
-                      return (
-                        <li className="text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
-                          <span>{lang}</span> <img src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
-                        </li>
-                      )
-                    }
-                  })
+                  this.state.langs.map((lang, idx) => (this.state.sel_lang !== lang) ?
+                    <li className="lang-list__li text-uppercase" key={idx} onClick={() => this.selectLang(lang)}>
+                      <span className="lang-list__span">{lang}</span> <img className="lang-list__img" src={"/assets/icons/lang-" + lang + ".png"} alt="lang" />
+                    </li> : null)
                 }
               </ul>
             </div>
           </div>
 
           <div className="search visible-sm">
-            <input className="" placeholder="Search by City or Zip" />
+            <input className="search__input" placeholder="Search by City or Zip" />
           </div>
 
           <h1 className="page-title visible-sm text-uppercase">Home</h1>
 
-          <ul className="menu">
+          <ul className="menu parent_menu">
             {
               this.state.navItems1.map((menuItem, idx) => {
                 return (
-                  <li className={"item menu-1 " + (menuItem.child ? " has-child" : "") + (menuItem.childMenuOpened ? " opened" : "") + (menuItem.mobile_cities ? " has-cities" : "")} key={idx} onClick={() => this.openChildMenu(idx)}>
-                    <a><span>{menuItem.title}</span></a>
+                  <li className={
+                    "parent_menu__item menu__item menu-1 " +
+                    (
+                      menuItem.child || menuItem.mobile_cities ? (
+                        menuItem.child ? (menuItem.childMenuOpened ? "menu__item--has-child menu__item--has-child--opened" : "menu__item--has-child") : (menuItem.childMenuOpened ? "menu__item--has-cities menu__item--has-cities--opened" : "menu__item--has-cities")
+                      ) : ""
+                    )
+                  } key={idx} onClick={() => this.openChildMenu(idx)}>
+                    <a className={"menu__item__link parent_menu__item_link " + (menuItem.child ? " parent_menu__item_link--has-child" : "parent_menu__item_link--not-has-child ") + (menuItem.childMenuOpened ? " parent_menu__item_link--opened" : "")}><span>{menuItem.title}</span></a>
 
                     {menuItem.child ?
-                      <ul>
+                      <ul className={"sub-menu sub-menu__normal" + (menuItem.childMenuOpened ? " sub-menu__normal--opened sub-menu--opened" : "")}>
                         {
                           menuItem.child.map((item, c_idx) => {
                             return (
-                              <li className="child item" key={c_idx}><a><span>{item}</span></a></li>
+                              <li className="sub-menu__item sub-menu__item--has-child menu__item" key={c_idx}><a className="menu__item__link sub-menu__item__link"><span>{item}</span></a></li>
                             )
                           })
                         }
                       </ul>
-                      : menuItem.mobile_cities ? <ul className="visible-sm-block">
+                      : menuItem.mobile_cities ? <ul className={"sub-menu sub-menu__cities visible-sm-block " + (menuItem.childMenuOpened ? " sub-menu__cities--opened sub-menu--opened" : "")}>
                         {
                           this.state.navItems3[this.state.sel_lang].map((item, key) => {
                             return (
-                              <li className="child item" key={key}><a>{item.title}</a></li>
+                              <li className=" sub-menu__item sub-menu__item--has-cities menu__item" key={key}><a className=" sub-menu__item__link">{item.title}</a></li>
                             )
                           })}
                       </ul> : null}
@@ -238,26 +235,26 @@ class App extends Component {
             {
               this.state.navItems2.map((menuItem, idx) => {
                 return (
-                  <li className="item menu-2" key={idx}>
-                    <a><span>{menuItem.title}</span></a>
+                  <li className="menu__item menu-2" key={idx}>
+                    <a className="parent_menu__item_link parent_menu__item_link--not-has-child menu__item__link"><span>{menuItem.title}</span></a>
                   </li>
                 )
               })
             }
             <hr className="visible-sm" />
 
-            <li className="item menu-1 login visible-sm-block">
-              <a><span>Log In</span></a>
+            <li className="menu__item menu-2 visible-sm-block">
+              <a className="parent_menu__item_link parent_menu__item_link--not-has-child menu__item__link"><span>Log In</span></a>
             </li>
           </ul>
         </div>
 
-        <div className="sub-menu visible-lg">
-          <ul>
+        <div className="sub-menu--cities-container visible-lg">
+          <ul className="sub-menu--cities">
             {
               this.state.navItems3[this.state.sel_lang].map((item, key) => {
                 return (
-                  <li key={key}><a>{item.title}</a></li>
+                  <li className="sub-menu--cities__item" key={key}><a className="sub-menu--cities__link">{item.title}</a></li>
                 )
               })
             }
